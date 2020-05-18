@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Pedido {
 	@Id
@@ -27,7 +29,8 @@ public class Pedido {
 	
 	@ManyToOne()
 	@JoinColumn(name = "id_usuario")
-	private Usuario Usuario;
+	@JsonIgnore
+	private Usuario usuario;
 	
 	@ManyToOne()
 	@JoinColumn(name= "id_evento")
@@ -83,17 +86,17 @@ public class Pedido {
 	}
 
 	public Usuario getUsuario() {
-		return Usuario;
+		return usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
-		Usuario = usuario;
+		this.usuario = usuario;
 	}
 
 	@Override
 	public String toString() {
 		return "Pedido [idpedido=" + idpedido + ", total=" + total + ", data_compra=" + data_compra + ", Usuario="
-				+ Usuario + "]";
+				+ usuario + "]";
 	}
 	
 	

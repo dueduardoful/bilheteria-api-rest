@@ -35,8 +35,15 @@ public class PedidoController {
 	}
 	
 	@PostMapping("/pedidos")
-	public Pedido criarCasaDeShow(@RequestBody Pedido pedido) {
-		return repository.save(pedido);
+	public Pedido criarCasaDeShow(@RequestBody Pedido pedido) throws Exception {
+		if(pedido.getQuantidade() <= 4 && pedido.getQuantidade() > 0) {
+			return repository.save(pedido);
+		}
+		else {
+			System.out.println("Quantidade limitada até 4 ingressos");
+			throw new Exception("Quantidade limitada até 4 ingressos");
+		}
+		
 	}
 	
 	@PutMapping("/pedidos/{id}")

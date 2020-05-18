@@ -63,9 +63,9 @@ public class Usuario implements Serializable {
 			inverseJoinColumns =@JoinColumn(name="id_papel"))
 	private List<Papel> papeis = new ArrayList<>();
 	
-//	@JsonIgnore
-//	@OneToMany(mappedBy = "Usuario")
-//	private List<Pedido> listPedidos = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "usuario")
+	private List<Pedido> listPedidos = new ArrayList<>();
 	
 	
 	public Usuario() {
@@ -81,17 +81,15 @@ public class Usuario implements Serializable {
 		this.telefone = telefone;
 		this.senha = senha;
 	}
-
-
 	
 
-//	public List<Pedido> getListPedidos() {
-//		return listPedidos;
-//	}
-//
-//	public void setListPedidos(List<Pedido> listPedidos) {
-//		this.listPedidos = listPedidos;
-//	}
+	public List<Pedido> getListPedidos() {
+		return listPedidos;
+	}
+
+	public void setListPedidos(List<Pedido> listPedidos) {
+		this.listPedidos = listPedidos;
+	}
 
 	public Long getIdcliente() {
 		return idcliente;

@@ -7,5 +7,6 @@ import com.apirest.apirest.entidades.Pedido;
 
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
-
+	
+	
 }

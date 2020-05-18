@@ -38,6 +38,7 @@ public class CasaDeShow {
 	
 	@ManyToOne(optional = true, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_usuario")
+	@JsonIgnore
 	private Usuario usuario;
 	
 	@JsonIgnore
