@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apirest.apirest.entidades.Evento;
 import com.apirest.apirest.entidades.Pedido;
+import com.apirest.apirest.repository.EventoRepository;
 import com.apirest.apirest.repository.PedidoRepository;
 
 @RestController
@@ -23,6 +25,8 @@ public class PedidoController {
 	
 	@Autowired
 	private PedidoRepository repository;
+	@Autowired
+	private EventoRepository repositoryEvento;
 	
 	@GetMapping("/pedidos")
 	public List<Pedido> ListarTodos(){
@@ -35,12 +39,14 @@ public class PedidoController {
 	}
 	
 	@PostMapping("/pedidos")
-	public Pedido criarCasaDeShow(@RequestBody Pedido pedido) throws Exception {
+	public Pedido criarPedido(@RequestBody Pedido pedido, Evento evento) throws Exception {
+		System.out.println(pedido);
 		if(pedido.getQuantidade() <= 4 && pedido.getQuantidade() > 0) {
+			evento = repositoryEvento.findById(pedido.getEvento().getIdevento()).get();
+			evento.setIngressos(evento.getIngressos() - pedido.getQuantidade());
 			return repository.save(pedido);
 		}
 		else {
-			System.out.println("Quantidade limitada até 4 ingressos");
 			throw new Exception("Quantidade limitada até 4 ingressos");
 		}
 		
