@@ -19,7 +19,6 @@ import com.apirest.apirest.entidades.Evento;
 import com.apirest.apirest.repository.EventoRepository;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/")
 public class EventoController {
 	
 	@Autowired
