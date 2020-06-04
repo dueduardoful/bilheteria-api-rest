@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apirest.apirest.entidades.CasaDeShow;
 import com.apirest.apirest.repository.CasaDeShowRepository;
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
-@RequestMapping("/")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CasaDeShowController {
 	
 	@Autowired
